@@ -1,0 +1,163 @@
+/* Fundo com imagem, blur e sobreposição escura */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('./assets/world_3d1.png') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Coloca o overlay atrás do conteúdo */
+}
+
+.header {
+  background-color: #007c38;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+}
+
+/* Estilo da frase temática */
+.intro-text {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+/* Instruções do jogo */
+.instructions {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Centraliza o conteúdo no centro da tela */
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  z-index: 1;
+}
+
+/* Exibe bandeira e informações lado a lado */
+.game-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px; /* Espaço entre a bandeira e as informações */
+}
+
+.flag-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Sombra na imagem da bandeira e animação suave */
+.flag-container img {
+  width: 300px;
+  height: 200px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Sombra */
+  border-radius: 10px; /* Cantos arredondados */
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Mostra a bandeira com animação */
+.flag-container img.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilo das opções de países em coluna */
+.name-container {
+  display: flex;
+  flex-direction: column; /* Exibe as opções uma abaixo da outra */
+  gap: 10px;
+}
+
+/* Estilo dark e sombra nos botões */
+.country-name-button, .next-button, .playBtn, .restart-button {
+  padding: 10px 20px;
+  margin: 5px 0;
+  font-size: 18px;
+  background-color: #007c38; /* Cor de fundo dark */
+  color: #ffffff; /* Texto branco */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Sombra */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.country-name-button:hover, .next-button:hover, .playBtn:hover, .restart-button:hover {
+  background-color: #025025; /* Fundo mais escuro ao passar o mouse */
+}
+
+/* Informações sobre o país com animação suave */
+.info-container {
+  padding: 20px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Sombra nas informações */
+  width: 300px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Mostra as informações com animação */
+.info-container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mensagens de feedback */
+.message-container {
+  margin-top: 10px;
+}
+
+/* Sombra nos botões "Próximo" */
+.next-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007c38;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.next-button:hover {
+  background-color: #333;
+}
+
+.score, .lives {
+  font-size: 25px;
+  margin: 10px;
+  color: #ffffff;
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bandeiras - Trivia</title>
+  </head>
+  <body>
+    <header class="header">
+      Bandeiras dos Países - Trivia
+    </header>
+    <div class="intro-text">
+      <p>
+        É muito comum na escola e nos esportes (futebol, vôlei, Fórmula 1) vermos as bandeiras de diversos países. 
+        Mas será que você lembra o nome dos países de acordo com as bandeiras?
+      </p>
+    </div>
+    <div id="app">
+      <div class="instructions">
+        <p>Veja a imagem da bandeira e descubra qual o país que ela representa.</p>
+      </div>
+      
+      <!-- Contêiner de jogo, agora com bandeira e informações lado a lado -->
+      <div class="game-container">
+        <div class="flag-info">
+          <div class="flag-container"></div>
+        </div>
+        <div class="name-container"></div>
+      </div>
+      
+      <div class="button-container">
+        <button id="playBtn" class="playBtn">Play</button>
+      </div>
+      
+      <div class="result">
+        <div class="score-container">
+          <div class="score">Acertos: <span class="hits">0</span></div>
+          <div class="score">Pontos: <span class="points">0</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
