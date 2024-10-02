@@ -6,6 +6,9 @@ body {
   background: url('./assets/world_3d1.png') no-repeat center center fixed;
   background-size: cover;
   position: relative;
+  min-height: 100vh; /* Garante que o body sempre ocupe a altura total da janela */
+  display: flex;
+  flex-direction: column;
 }
 
 body::before {
@@ -56,6 +59,10 @@ body::before {
   justify-content: center;
   height: 80vh;
   z-index: 1;
+  margin-top: 20px;
+  padding: 20px;
+  box-sizing: border-box; /* Garante que o padding seja incluído no tamanho total */
+  overflow: auto; 
 }
 
 /* Exibe bandeira e informações lado a lado */
