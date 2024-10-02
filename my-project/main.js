@@ -17,6 +17,7 @@ let lives = 3; // Começando com 3 vidas
 let countries = [];
 let nextButton;
 let gameOver = false;
+let attempts = []; // Array para armazenar as pontuações de cada tentativa
 
 // Função para buscar os países da API REST Countries
 async function fetchCountries() {
@@ -37,6 +38,7 @@ function startGame() {
   lives = 3;
   hitCount = 0;
   points = 0;
+  attempts = []; // Zera o array de tentativas ao iniciar um novo jogo
   updateScoreDisplay();
 
   if (countries.length === 0) {
@@ -84,6 +86,16 @@ function displayNewQuestion() {
   flagContainer.appendChild(messageContainer);
 }
 
+// Função que atualiza o placar baseado nas tentativas
+function updateScore() {
+  // Usando reduce para acumular a pontuação total
+  points = attempts.reduce((total, score) => total + score, 0);
+  hitsElement.textContent = hitCount;
+  pointsElement.textContent = points;
+  const livesElement = document.querySelector('.lives');
+  livesElement.innerHTML = `Vidas: ${lives}`;
+}
+
 function checkAnswer(selectedCountry, correctCountry) {
   if (gameOver) return; // Se o jogo terminou, não avalia mais respostas
 
@@ -91,15 +103,15 @@ function checkAnswer(selectedCountry, correctCountry) {
 
   if (selectedCountry.name.common === correctCountry.name.common) {
     hitCount++;
-    points += 100;
+    attempts.push(100); // Adiciona 100 ao array de tentativas em caso de acerto
     displayMessage("Você acertou!", "green");
   } else {
     lives--; // Remove uma vida ao errar
+    attempts.push(0); // Adiciona 0 ao array de tentativas em caso de erro
     displayMessage(`Você errou! A resposta correta era ${correctCountry.name.common}.`, "red");
   }
 
-  // Atualiza os elementos na página
-  updateScoreDisplay();
+  updateScore(); // Atualiza o placar chamando a função que usa reduce
 
   // Verifica se o jogo acabou
   if (lives === 0) {
@@ -178,6 +190,7 @@ function restartGame() {
   lives = 3;
   hitCount = 0;
   points = 0;
+  attempts = []; // Reinicia as tentativas
   gameOver = false;
 
   updateScoreDisplay(); // Atualiza o display para os valores iniciais
